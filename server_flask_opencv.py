@@ -13,10 +13,7 @@ app.run(host = '0.0.0.0', port = '8000')
 # 실행하면 터미널에 나오는 IP 클릭해서 들어가기.
 
 import cv2 as cv
-
-if __name__ == '__main__':
-
-    
+def capture_frame():
     # /dev/video
     cap = cv.VideoCapture(0)
     while cap.isOpened():
@@ -24,5 +21,12 @@ if __name__ == '__main__':
         cv.imshow('webcam',frame)
         cv.waitKey(1)
         pass
+    return
 
+import threading
+if __name__ == '__main__':
+    cap_thread = threading.Thread(target = capture_frame)
+    cap_thread.daemon = True
+    cap_thread.start()
+    cap_thread.join()
     app.run(host='0.0.0.0', port='8000')
