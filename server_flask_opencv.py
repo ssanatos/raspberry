@@ -12,8 +12,8 @@ video_frame = None
 import cv2 as cv
 def encodeframe():
     global video_frame
-    ret, encoded_image = cv.imencode('.jpg', video_frame)
     while True:
+        ret, encoded_image = cv.imencode('.jpg', video_frame)
         yield(b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' + 
                 bytearray(encoded_image) + b'\r\n')
     return 
