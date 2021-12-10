@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def helloworld():
-    str = "Hello World! SanghunOh"
+    str = "Hello World! seohyeonho"
     return str
 
 global video_frame
